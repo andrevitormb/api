@@ -7,6 +7,8 @@
   },
   "author": "André Vitor Macedo",
   "license": "ISC",
-  "description": "API development to learn"
+  "description": "API development to learn",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
- 
