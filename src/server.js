@@ -23,7 +23,10 @@ app.get("/user" , (request, response)=>{
 })
 
 ///localhost:3333/user?page=1&limit=10
-/// /user (recurso) ? ( primeiro separador) & (demais separadores)
+/// /user (recurso) ? ( primeiro separador) & (demais separadores) 
+
+///npm install nodemon --save-dev
+// npm run dev
 
 app.listen(PORT,() => {
     console.log(`server is running on Port ${PORT}`);
