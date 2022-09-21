@@ -3,27 +3,18 @@ const express = require('express');
 const app = express();
 
 const PORT = 3333;
+ 
+app.use(express.json()) //declare it will be used format JSON()
 
-app.get("/message/:id/:user", (request,response)=>{
-
-    const {id, user}= request.params // Destruct object
-
-    response.send(`
-        Message ID: ${id}.
-        For user: ${user}.
-    `);
-}) 
-
-/// localhost:3333/message/50/Andre
-
-app.get("/user" , (request, response)=>{
-    const {page,limit} = request.query
-
-    response.send(`Page: ${page}Limit: ${limit}`)
+app.post("/user",(request, response)=>{
+    
+    const { name , age , password } = request.body;
+    
+    response.json({name, password , age}) 
 })
 
-///localhost:3333/user?page=1&limit=10
-/// /user (recurso) ? ( primeiro separador) & (demais separadores) 
+//using ////insomnia was done a test with method "POST" 
+//localhost:3333/user 
 
 ///npm install nodemon --save-dev
 // npm run dev
