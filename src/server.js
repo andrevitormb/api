@@ -1,11 +1,34 @@
+require("express-async-errors") //npm install express-async-errors --save
+
 const express = require('express');
 
-const app = express();
+const AppError = require("./utils/AppError")
 
 const routes = require("./routes");
 
+const app = express();
 app.use(express.json()) //declare it will be used format JSON()
+
 app.use(routes)
+
+app.use((error, request, response , next) =>{
+
+    if(error instanceof AppError){
+        return response.status(error.statusCode).json({
+            status: "error",
+            message: error.message
+        });
+
+        
+    }
+
+    console.error(error);
+
+    return response.status(500).json({
+        status: "error",
+        message: "Internal server error"
+    })
+})
 
 //using ////insomnia was done a test with method "POST" 
 //localhost:3333/user 
