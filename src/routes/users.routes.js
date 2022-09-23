@@ -1,12 +1,12 @@
-const {Router} = require("express")
+//Routes
+const {Router} = require("express");
+const usersRouter = Router();
 
-const usersRouter = Router()
+//Controllers
+const UsersControllers = require("../controllers/UsersControllers");
+const usersControllers = new UsersControllers(); //instanciar na memoria para usar os methods
 
-usersRouter.post("/",(request, response)=>{
-    
-    const { name , age , password } = request.body;
-    
-    response.json({name, password , age}) 
-})
+//Path
+usersRouter.post("/",usersControllers.create);
 
 module.exports = usersRouter;
