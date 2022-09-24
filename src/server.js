@@ -1,5 +1,7 @@
 require("express-async-errors") //npm install express-async-errors --save
 
+const database = require("./database/sqlite")
+
 const express = require('express');
 
 const AppError = require("./utils/AppError")
@@ -8,6 +10,8 @@ const routes = require("./routes");
 
 const app = express();
 app.use(express.json()) //declare it will be used format JSON()
+
+database() // call function to create database instance
 
 app.use(routes)
 
