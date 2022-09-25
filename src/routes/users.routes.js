@@ -9,5 +9,6 @@ const usersControllers = new UsersControllers(); //instanciar na memoria para us
 
 //Path
 usersRouter.post("/",usersControllers.create);
+usersRouter.put("/:id",usersControllers.update);
 
 module.exports = usersRouter;
