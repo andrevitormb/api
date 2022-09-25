@@ -37,8 +37,8 @@ class UsersControllers {
             throw new AppError("this email already exists")
         }
 
-        user.name = name;
-        user.email = email;
+        user.name = name ?? user.name;
+        user.email = email ?? user.email;
 
         if (password && !old_password){
             throw new AppError("the Old password is necessary") 
