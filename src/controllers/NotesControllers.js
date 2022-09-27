@@ -1,3 +1,4 @@
+const knexfile = require('../../knexfile');
 const knex = require('../database/knex');
 
 class NotesControllers{
@@ -46,8 +47,24 @@ class NotesControllers{
             links
         })
 
-
     }
+
+    async delete(request, response) {
+        const {id} = request.params
+
+        await knex("notes").where({id}).delete()
+
+        return response.json()
+    }
+
+    async index(request, response){
+        const {user_id, title} = request.query;
+        const notes = await knex("notes").where({user_id})
+        .whereLike("title", `%${title}%`).orderBy("title");
+
+        return response.json(notes);
+    }
+
 }
 
 module.exports = NotesControllers;
