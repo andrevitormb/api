@@ -9,5 +9,6 @@ const notesControllers = new NotesControllers(); //instanciar na memoria para us
 
 //Path
 notesRoutes.post("/:user_id",notesControllers.create);
+notesRoutes.get("/:id",notesControllers.show);
 
 module.exports = notesRoutes;
